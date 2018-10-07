@@ -3,3 +3,14 @@ import 'vuetify/dist/vuetify.min.css';
 .title {
   color: #000;
 }
+
+.logo-login {
+   width: 310px;
+   padding-bottom: 50px;
+}
+
+.logo-toolbar {
+  position: relative;
+  top: 9px;
+  right: 50px;
+}
