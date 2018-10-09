@@ -86,7 +86,7 @@
         class="hidden-sm-and-down"
       ></v-text-field>
       <v-spacer></v-spacer>
-      <h3>{{ this.user.name }}</h3>
+      <h3>{{ this.user }}</h3>
       <v-btn icon>
         <v-icon>notifications</v-icon>
       </v-btn>
@@ -96,7 +96,28 @@
     </v-toolbar>
     <v-content>
       <v-container fluid fill-height>
-        <!-- iconos que estaban en el centro -->
+        <div class="flex-container">
+          <div class="flex-row-container" v-for="auction in this.auctionList" :key="auction.title">
+            <v-card>
+              <v-img
+                :src="auction.image"
+                aspect-ratio="2.75"
+              ></v-img>
+              <v-card-title primary-title>
+                <div>
+                  <h3 class="headline mb-0">{{ auction.title }}</h3>
+                  <div>{{ auction.description }}</div>
+                </div>
+              </v-card-title>
+              <v-card-actions>
+                <v-btn flat color="orange">Bet</v-btn>
+                <v-label>Última apuesta
+                  <v-label>${{ auction.price }}</v-label>
+                </v-label>
+              </v-card-actions>
+            </v-card>
+          </div>
+        </div>
       </v-container>
     </v-content>
     <v-btn
@@ -184,15 +205,27 @@ export default {
       type: String
     },
     user: {
-      type: Object,
+      type: String,
       required: false,
-      default: { name: 'Usuario' }
+      default: 'Usuario'
     }
   },
   data () {
     return {
       dialog: false,
       drawer: null,
+      auctionList: [
+        { title: 'Subasta 1', description: 'descripcion de la subasta', price: 500, image: 'https://cdn.vuetifyjs.com/images/cards/desert.jpg' },
+        { title: 'Subasta 2', description: 'descripcion de la subasta', price: 500, image: 'https://cdn.vuetifyjs.com/images/cards/desert.jpg' },
+        { title: 'Subasta 3', description: 'descripcion de la subasta', price: 500, image: 'https://cdn.vuetifyjs.com/images/cards/desert.jpg' },
+        { title: 'Subasta 4', description: 'descripcion de la subasta', price: 500, image: 'https://cdn.vuetifyjs.com/images/cards/desert.jpg' },
+        { title: 'Subasta 5', description: 'descripcion de la subasta', price: 500, image: 'https://cdn.vuetifyjs.com/images/cards/desert.jpg' },
+        { title: 'Subasta 6', description: 'descripcion de la subasta', price: 500, image: 'https://cdn.vuetifyjs.com/images/cards/desert.jpg' },
+        { title: 'Subasta 7', description: 'descripcion de la subasta', price: 500, image: 'https://cdn.vuetifyjs.com/images/cards/desert.jpg' },
+        { title: 'Subasta 8', description: 'descripcion de la subasta', price: 500, image: 'https://cdn.vuetifyjs.com/images/cards/desert.jpg' },
+        { title: 'Subasta 9', description: 'descripcion de la subasta', price: 500, image: 'https://cdn.vuetifyjs.com/images/cards/desert.jpg' },
+        { title: 'Subasta 10', description: 'descripcion de la subasta', price: 500, image: 'https://cdn.vuetifyjs.com/images/cards/desert.jpg' }
+      ],
       items: [
         { icon: 'contacts', text: 'Contacts' },
         { icon: 'history', text: 'Frequently contacted' },
@@ -232,3 +265,22 @@ export default {
   }
 }
 </script>
+<style scoped>
+  .flex-container {
+    display: flex;
+    position: absolute;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+    padding-top: 500px;
+  }
+
+  .flex-row-container {
+    display: flex;
+    position: relative;
+    width: 25%;
+    justify-content:space-between;
+    margin-bottom: 30px;
+    margin-right: 10px;
+  }
+</style>
