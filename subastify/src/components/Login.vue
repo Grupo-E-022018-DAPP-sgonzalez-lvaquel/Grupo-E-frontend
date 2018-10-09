@@ -52,7 +52,8 @@ export default {
       this.passwordVerificated = this.passwords.includes(this.password)
     },
     goHome () {
-      this.$router.push({ name: 'Home', params: { user: {name: this.username} } })
+      console.log(this.username)
+      this.$router.push({ name: 'Home', params: {user: this.username} })
     }
   },
   watch: {
