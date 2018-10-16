@@ -86,7 +86,7 @@
         class="hidden-sm-and-down"
       ></v-text-field>
       <v-spacer></v-spacer>
-      <h3>{{ this.user }}</h3>
+      <h3>Usuario</h3>
       <v-btn icon>
         <span class="lnr lnr-alarm icon"></span>
       </v-btn>
@@ -95,32 +95,52 @@
       </v-btn>
     </v-toolbar>
     <v-content>
-      <v-container fluid>
-        <div class="flex-container">
-          <div class="flex-row-container" v-for="auction in this.auctionList" :key="auction.title">
-            <v-card>
-              <v-img
-                :src="auction.image"
-                aspect-ratio="2.75"
-              ></v-img>
-              <v-card-title primary-title>
-                <div>
-                  <h3 class="headline mb-0">{{ auction.title }}</h3>
-                  <router-link :to="{ name: 'DetalleApuesta', params: {subasta: auction} }">
-                    <v-btn flat color="default">Detalle</v-btn>
-                  </router-link>
-                  <div>{{ auction.description }}</div>
-                </div>
-              </v-card-title>
-              <v-card-actions>
-                <v-btn flat color="orange">Bet</v-btn>
-                <v-label>Última apuesta
-                  <v-label>${{ auction.price }}</v-label>
-                </v-label>
-              </v-card-actions>
-            </v-card>
-          </div>
-        </div>
+      <v-container>
+        <hr/>
+        <v-layout>
+          <v-flex xs8>
+            <v-container>
+              <v-layout>
+                <v-flex xs7>
+                  <h1>Subasta 1</h1>
+                </v-flex>
+                <v-flex xs1>
+                  <span>Finaliza en: 19hs.</span>
+                </v-flex>
+              </v-layout>
+            </v-container>
+            <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</span>
+          </v-flex>
+          <v-flex xs4 class="price-info">
+            <div class="price-info-item">
+              <span>Tramo actual - n° 15</span>
+              <h2>$280</h2>
+            </div>
+            <hr/>
+            <div class="price-info-item">
+              <span>Tramo n°16
+                <h3>$300</h3>
+              </span>
+              <v-btn color='black'>
+                <label style="color: white">Realizar Oferta</label>
+              </v-btn>
+            </div>
+            <hr/>
+            <div class="price-info-item">
+              <h3>Cantidad de postores</h3>
+              <h5>250 postores en la subasta</h5>
+            </div>
+            <hr>
+            <div>
+              <h3>Avance de la subasta</h3>
+              <h5>user1 Tramo 14 16/10/2018 11:00hs.</h5>
+              <h5>user2 Tramo 14 16/10/2018 11:00hs.</h5>
+              <h5>user3 Tramo 14 16/10/2018 11:00hs.</h5>
+              <h5>user4 Tramo 14 16/10/2018 11:00hs.</h5>
+              <h5>user5 Tramo 14 16/10/2018 11:00hs.</h5>
+            </div>
+          </v-flex>
+        </v-layout>
       </v-container>
     </v-content>
     <v-btn
@@ -202,33 +222,19 @@
 
 <script>
 export default {
-  name: 'Home',
+  name: 'DetalleApuesta',
   props: {
     source: {
       type: String
     },
-    user: {
-      type: String,
-      required: false,
-      default: 'Usuario'
+    subasta: {
+      type: Object
     }
   },
   data () {
     return {
       dialog: false,
       drawer: null,
-      auctionList: [
-        { title: 'Subasta 1', description: 'descripcion de la subasta', price: 500, image: 'https://cdn.20m.es/img2/recortes/2011/03/05/11652-600-338.jpg' },
-        { title: 'Subasta 2', description: 'descripcion de la subasta', price: 500, image: 'https://cdn.20m.es/img2/recortes/2011/03/05/11652-600-338.jpg' },
-        { title: 'Subasta 3', description: 'descripcion de la subasta', price: 500, image: 'https://cdn.20m.es/img2/recortes/2011/03/05/11652-600-338.jpg' },
-        { title: 'Subasta 4', description: 'descripcion de la subasta', price: 500, image: 'https://cdn.20m.es/img2/recortes/2011/03/05/11652-600-338.jpg' },
-        { title: 'Subasta 5', description: 'descripcion de la subasta', price: 500, image: 'https://cdn.20m.es/img2/recortes/2011/03/05/11652-600-338.jpg' },
-        { title: 'Subasta 6', description: 'descripcion de la subasta', price: 500, image: 'https://cdn.20m.es/img2/recortes/2011/03/05/11652-600-338.jpg' },
-        { title: 'Subasta 7', description: 'descripcion de la subasta', price: 500, image: 'https://cdn.20m.es/img2/recortes/2011/03/05/11652-600-338.jpg' },
-        { title: 'Subasta 8', description: 'descripcion de la subasta', price: 500, image: 'https://cdn.20m.es/img2/recortes/2011/03/05/11652-600-338.jpg' },
-        { title: 'Subasta 9', description: 'descripcion de la subasta', price: 500, image: 'https://cdn.20m.es/img2/recortes/2011/03/05/11652-600-338.jpg' },
-        { title: 'Subasta 10', description: 'descripcion de la subasta', price: 500, image: 'https://cdn.20m.es/img2/recortes/2011/03/05/11652-600-338.jpg' }
-      ],
       items: [
         { icon: 'contacts', text: 'Contacts' },
         { icon: 'history', text: 'Frequently contacted' },
@@ -264,7 +270,7 @@ export default {
     }
   },
   created () {
-    console.log(this.$router)
+    console.log(this.subasta.title)
   }
 }
 </script>
@@ -275,6 +281,7 @@ export default {
     flex-direction: row;
     flex-wrap: wrap;
     width: 100%;
+    padding-top: 500px;
   }
 
   .flex-row-container {

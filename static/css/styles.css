@@ -1,4 +1,13 @@
 import 'vuetify/dist/vuetify.min.css';
+@import url('https://fonts.googleapis.com/css?family=Ubuntu');
+
+body {
+  font-family: 'Ubuntu', sans-serif!important;
+}
+
+.icon {
+  font-size: 25px;
+}
 
 .title {
   color: #000;
@@ -13,4 +22,22 @@ import 'vuetify/dist/vuetify.min.css';
   position: relative;
   top: 9px;
   right: 50px;
+}
+
+.price-info {
+  padding-left: 30px;
+}
+
+.price-info-item {
+  position: relative;
+  flex-direction: row;
+}
+
+.price-info div {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.price-info div h5 {
+  padding-bottom: 7px;
 }
