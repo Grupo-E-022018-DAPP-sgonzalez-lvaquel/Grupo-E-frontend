@@ -94,9 +94,11 @@
         <span class="lnr lnr-user icon"></span>
       </v-btn>
     </v-toolbar>
-    <v-content>
-      <router-view></router-view>
-    </v-content>
+      <v-container>
+        <v-layout>
+          <router-view></router-view>
+        </v-layout>
+      </v-container>
     <v-btn
       fab
       bottom
@@ -183,8 +185,7 @@ export default {
     },
     user: {
       type: String,
-      required: false,
-      default: 'Usuario'
+      required: false
     }
   },
   data () {
@@ -243,7 +244,8 @@ export default {
     }
   },
   created () {
-    this.$router.push({name: 'Home', params: { user: 'Leo' }})
+    console.log(this.user)
+    this.$router.push({name: 'Home'})
   }
 }
 </script>

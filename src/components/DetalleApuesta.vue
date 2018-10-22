@@ -1,5 +1,5 @@
 <template lang="html">
-  <v-content>
+  <v-content class="content">
       <hr/>
       <v-layout>
         <v-flex xs8>

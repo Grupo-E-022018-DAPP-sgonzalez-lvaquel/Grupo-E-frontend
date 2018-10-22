@@ -16,8 +16,8 @@ export default new Router({
     },
     {
       path: '/',
-      component: Dash,
       name: 'Dash',
+      component: Dash,
       children: [
         {
           path: 'home',
@@ -31,7 +31,8 @@ export default new Router({
           component: DetalleApuesta,
           props: true
         }
-      ]
+      ],
+      props: true
     }
   ]
 })

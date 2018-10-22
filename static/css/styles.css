@@ -5,6 +5,14 @@ body {
   font-family: 'Ubuntu', sans-serif!important;
 }
 
+.router {
+  text-decoration:  none;
+}
+
+.content {
+  margin-top: 60px;
+}
+
 .icon {
   font-size: 25px;
 }

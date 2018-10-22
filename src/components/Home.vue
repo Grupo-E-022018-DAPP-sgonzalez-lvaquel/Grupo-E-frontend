@@ -1,31 +1,31 @@
 <template lang="html">
-    <layout>
-      <div class="flex-container">
-        <div class="flex-row-container" v-for="auction in this.auctionList" :key="auction.title">
-          <v-card>
-            <v-img
-              :src="auction.image"
-              aspect-ratio="2.75"
-            ></v-img>
-            <v-card-title primary-title>
-              <div>
-                <h3 class="headline mb-0">{{ auction.title }}</h3>
-                <router-link :to="{ name: 'DetalleApuesta', params: {subasta: auction} }">
-                  <v-btn flat color="default">Detalle</v-btn>
-                </router-link>
-                <div>{{ auction.description }}</div>
-              </div>
-            </v-card-title>
-            <v-card-actions>
-              <v-btn flat color="orange">Apostar</v-btn>
-              <v-label>Última apuesta
-                <v-label>${{ auction.price }}</v-label>
-              </v-label>
-            </v-card-actions>
-          </v-card>
-        </div>
+  <v-content class="content">
+    <div class="flex-container">
+      <div class="flex-row-container" v-for="auction in this.auctionList" :key="auction.title">
+        <v-card>
+          <v-img
+            :src="auction.image"
+            aspect-ratio="2.75"
+          ></v-img>
+          <v-card-title primary-title>
+            <div>
+              <h3 class="headline mb-0">{{ auction.title }}</h3>
+              <router-link :to="{ name: 'DetalleApuesta', params: {subasta: auction} }" class="router">
+                <v-btn color="grey darken-4" style="color: #fff">Detalle</v-btn>
+              </router-link>
+              <div>{{ auction.description }}</div>
+            </div>
+          </v-card-title>
+          <v-card-actions>
+            <v-btn flat color="orange">Apostar</v-btn>
+            <v-label>Última apuesta
+              <v-label>${{ auction.price }}</v-label>
+            </v-label>
+          </v-card-actions>
+        </v-card>
       </div>
-    </layout>
+    </div>
+  </v-content>
 </template>
 
 <script>

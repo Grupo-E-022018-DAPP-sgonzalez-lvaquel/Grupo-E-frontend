@@ -52,7 +52,7 @@ export default {
       this.passwordVerificated = this.passwords.includes(this.password)
     },
     goHome () {
-      this.$router.push({ name: 'Home', params: {user: this.username} })
+      this.$router.push({ name: 'Dash', params: {user: {name: this.username}} })
     }
   },
   watch: {
@@ -67,3 +67,8 @@ export default {
   }
 }
 </script>
+<style media="screen">
+  .container {
+    padding: 0!important;
+  }
+</style>
