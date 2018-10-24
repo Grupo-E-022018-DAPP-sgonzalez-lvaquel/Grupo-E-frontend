@@ -4,10 +4,9 @@ import { state } from './state'
 import * as getters from './getters'
 import * as actions from './actions'
 import * as mutations from './mutations'
-import plugins from './plugins'
+// import plugins from './plugins'
 import {
-  subastas
-} from '-/cruds'
+} from './cruds'
 
 // XXX ver como implementarlo con strict true
 // https://ypereirareis.github.io/blog/2017/04/25/vuejs-two-way-data-binding-state-management-vuex-strict-mode/
@@ -20,9 +19,7 @@ const store = new Vuex.Store({
   getters,
   actions,
   mutations,
-  plugins,
   modules: {
-    subastas
   }
 // strict: debug
 })

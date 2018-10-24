@@ -1,1 +1,7 @@
-export const user = state => state.user
+import {
+  SUBASTAS
+} from './constants'
+
+export const getSubastas = (state) => {
+  return SUBASTAS
+}

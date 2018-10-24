@@ -1,9 +1,9 @@
 import createCrudModule from 'vuex-crud'
 
-const SUBASTAS_API = process.env.API_BASE + '/subastas'
+const SUBASTAS_API = process.env.API_BASE + '/auctions'
 
-export const subastas = createCrudModule({
-  resource: 'subastas',
+export const auctions = createCrudModule({
+  resource: 'auctions',
   urlRoot: SUBASTAS_API,
   parseList (response) {
     const { data } = response

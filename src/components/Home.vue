@@ -1,7 +1,7 @@
-<template lang="html">
+<template lang="html" v-if="this.showhtml">
   <v-content class="content">
     <div class="flex-container">
-      <div class="flex-row-container" v-for="auction in this.auctionList" :key="auction.title">
+      <div class="flex-row-container" v-for="auction in this.getSubastas" :key="auction.title">
         <v-card>
           <v-img
             :src="auction.image"
@@ -29,27 +29,21 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 export default {
   data () {
     return {
-      auctionList: [
-        { title: 'Subasta 1', description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in', price: 500, image: 'https://cdn.20m.es/img2/recortes/2011/03/05/11652-600-338.jpg' },
-        { title: 'Subasta 2', description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in', price: 500, image: 'https://cdn.20m.es/img2/recortes/2011/03/05/11652-600-338.jpg' },
-        { title: 'Subasta 3', description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in', price: 500, image: 'https://cdn.20m.es/img2/recortes/2011/03/05/11652-600-338.jpg' },
-        { title: 'Subasta 4', description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in', price: 500, image: 'https://cdn.20m.es/img2/recortes/2011/03/05/11652-600-338.jpg' },
-        { title: 'Subasta 5', description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in', price: 500, image: 'https://cdn.20m.es/img2/recortes/2011/03/05/11652-600-338.jpg' },
-        { title: 'Subasta 6', description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in', price: 500, image: 'https://cdn.20m.es/img2/recortes/2011/03/05/11652-600-338.jpg' },
-        { title: 'Subasta 7', description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in', price: 500, image: 'https://cdn.20m.es/img2/recortes/2011/03/05/11652-600-338.jpg' },
-        { title: 'Subasta 8', description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in', price: 500, image: 'https://cdn.20m.es/img2/recortes/2011/03/05/11652-600-338.jpg' },
-        { title: 'Subasta 9', description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in', price: 500, image: 'https://cdn.20m.es/img2/recortes/2011/03/05/11652-600-338.jpg' },
-        { title: 'Subasta 10', description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in', price: 500, image: 'https://cdn.20m.es/img2/recortes/2011/03/05/11652-600-338.jpg' },
-        { title: 'Subasta 11', description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in', price: 500, image: 'https://cdn.20m.es/img2/recortes/2011/03/05/11652-600-338.jpg' },
-        { title: 'Subasta 12', description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in', price: 500, image: 'https://cdn.20m.es/img2/recortes/2011/03/05/11652-600-338.jpg' },
-        { title: 'Subasta 13', description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in', price: 500, image: 'https://cdn.20m.es/img2/recortes/2011/03/05/11652-600-338.jpg' },
-        { title: 'Subasta 14', description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in', price: 500, image: 'https://cdn.20m.es/img2/recortes/2011/03/05/11652-600-338.jpg' },
-        { title: 'Subasta 15', description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in', price: 500, image: 'https://cdn.20m.es/img2/recortes/2011/03/05/11652-600-338.jpg' }
-      ]
+      showhtml: false
     }
+  },
+  computed: {
+    ...mapGetters(['getSubastas'])
+  },
+  methods: {
+  },
+  created () {
+    console.log(this.getSubastas)
+    this.showhtml = true
   }
 }
 </script>
