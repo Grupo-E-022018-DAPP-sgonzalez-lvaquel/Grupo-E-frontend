@@ -1,4 +1,4 @@
-<template lang="html" v-if="this.showhtml">
+<template lang="html">
   <v-content class="content">
     <div class="flex-container">
       <div class="flex-row-container" v-for="auction in this.getSubastas" :key="auction.title">
@@ -29,7 +29,7 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 export default {
   data () {
     return {
@@ -37,13 +37,21 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['getSubastas'])
+    ...mapGetters(['getSubastas']),
+    ...mapGetters('auctions', {
+        auctionsList: 'list'
+    })
   },
   methods: {
+    ...mapActions('auctions', {
+        fetchAuctionsList: 'fetchList'
+    })
   },
   created () {
-    console.log(this.getSubastas)
-    this.showhtml = true
+    this.fetchAuctionsList().then((res) => {
+      console.log('fetchAuctionsList')
+      console.log(res)
+    })
   }
 }
 </script>

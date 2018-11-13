@@ -6,6 +6,7 @@ import * as actions from './actions'
 import * as mutations from './mutations'
 // import plugins from './plugins'
 import {
+  auctions
 } from './cruds'
 
 // XXX ver como implementarlo con strict true
@@ -20,6 +21,7 @@ const store = new Vuex.Store({
   actions,
   mutations,
   modules: {
+    auctions
   }
 // strict: debug
 })

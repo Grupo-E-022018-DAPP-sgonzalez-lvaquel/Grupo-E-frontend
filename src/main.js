@@ -7,10 +7,11 @@ import { sync } from 'vuex-router-sync'
 import router from './router'
 import store from './store'
 import Vuetify from 'vuetify'
-
 import AppView from './App.vue'
+import VueResource from 'vue-resource'
 
 Vue.use(Vuetify)
+Vue.use(VueResource)
 
 sync(store, router)
 
